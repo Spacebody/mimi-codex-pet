@@ -64,4 +64,4 @@ The contact sheet below is a QA artifact, not the in-app display. Red outlined c
 
 ## License
 
-See `LICENSE`.
+MIT. See `LICENSE`.
