@@ -2,7 +2,7 @@
 
 Mimi is a custom Codex pet based on a silver tabby American Shorthair kitten. The package includes a Codex-compatible animated spritesheet, manifest, QA contact sheet, and a small set of generation notes.
 
-![Mimi contact sheet](qa/contact-sheet.png)
+<img src="source/references/canonical-base.png" alt="Mimi preview" width="256">
 
 ## Install
 
@@ -57,6 +57,10 @@ The final `spritesheet.webp` passed validation:
 - size: `1536x1872`
 - errors: none
 - warnings: none
+
+The contact sheet below is a QA artifact, not the in-app display. Red outlined checkerboard cells are expected unused transparent slots for animation rows with fewer than 8 frames.
+
+<img src="qa/contact-sheet.png" alt="Mimi QA contact sheet" width="960">
 
 ## License
 
