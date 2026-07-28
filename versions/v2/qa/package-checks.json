@@ -1,0 +1,37 @@
+{
+  "packageChecksPassed": true,
+  "scope": "repository integration checks",
+  "manifest": {
+    "id": "mimi",
+    "displayName": "Mimi",
+    "spriteVersionNumber": 2,
+    "spritesheetPath": "spritesheet.webp",
+    "sha256": "6ba455f669121fd7e215283514656f9f0e9abd4483b6d4535463b05e32e73801"
+  },
+  "atlas": {
+    "format": "WEBP",
+    "width": 1536,
+    "height": 2288,
+    "channels": "srgba",
+    "hasAlpha": true,
+    "sha256": "68387bdb940c671081a7ab22461682f6e2ffde11f5abf4552e262ceb659bec80"
+  },
+  "cellOccupancy": {
+    "passed": true,
+    "cellWidth": 192,
+    "cellHeight": 208,
+    "columns": 8,
+    "rows": 11,
+    "neutralLookFrame": "row 0, column 6",
+    "lookRows": "rows 9 and 10, all 8 cells populated",
+    "unusedStandardCellsTransparent": true
+  },
+  "visualOverview": {
+    "passed": true,
+    "notes": "The complete atlas was inspected at original resolution; nine standard animation rows and sixteen clockwise look poses are present with a consistent Mimi identity."
+  },
+  "limitations": [
+    "The installed V2 package did not include its original generation-run QA artifacts.",
+    "The hatch-pet bundled Python validator was not rerun because load_workspace_dependencies was unavailable in this session."
+  ]
+}

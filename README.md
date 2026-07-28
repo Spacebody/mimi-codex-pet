@@ -1,40 +1,61 @@
 # Mimi Codex Pet
 
-Mimi is a custom Codex pet based on a silver tabby American Shorthair kitten. The package includes a Codex-compatible animated spritesheet, manifest, QA contact sheet, and a small set of generation notes.
+Mimi is a silver tabby American Shorthair companion for Codex. This repository keeps the original V1 pet and the extended V2 pet in separate, self-contained version directories.
 
-<img src="source/references/canonical-base.png" alt="Mimi preview" width="256">
+<img src="versions/v1/source/references/canonical-base.png" alt="Mimi preview" width="256">
 
 ## Install
 
-From this repository:
+Install the current version (V2):
 
 ```bash
 ./install.sh
 ```
 
-Or copy the pet files manually:
+Choose a version explicitly:
 
 ```bash
-mkdir -p ~/.codex/pets/mimi
-cp pet/pet.json pet/spritesheet.webp ~/.codex/pets/mimi/
+./install.sh --version v2
+./install.sh --version v1
+```
+
+You can also use the short positional form:
+
+```bash
+./install.sh v1
 ```
 
 Restart Codex after installing, then choose `Mimi` from custom pets.
 
-## Contents
+Both packages use the pet ID `mimi`, so only one version is active at a time. Running the installer again switches the active installation without changing either version stored in this repository.
 
-- `pet/pet.json` - Codex pet manifest.
-- `pet/spritesheet.webp` - 8x9 animated pet atlas, 1536x1872 RGBA.
-- `qa/contact-sheet.png` - visual QA sheet for all animation rows.
-- `qa/validation.json` - atlas validation output.
-- `qa/review.json` - frame extraction and geometry QA.
-- `qa/videos/` - a few preview animation clips.
-- `source/prompts/` - selected prompts used during generation.
-- `source/references/canonical-base.png` - approved base pet reference.
+If `CODEX_HOME` is set, the installer writes to `$CODEX_HOME/pets/mimi`. Otherwise it writes to `~/.codex/pets/mimi`.
+
+## Versions
+
+| Version | Atlas | Manifest contract | Content |
+| --- | --- | --- | --- |
+| V2 (default) | 1536×2288, 8×11 | `spriteVersionNumber: 2` | Nine standard animation rows plus 16 clockwise look directions |
+| V1 (legacy) | 1536×1872, 8×9 | No `spriteVersionNumber` | Nine standard animation rows |
+
+The repository layout is deliberately version-isolated:
+
+```text
+versions/
+  v1/
+    pet/
+    qa/
+    source/
+  v2/
+    pet/
+    qa/
+```
+
+See [V1 details](versions/v1/README.md) and [V2 details](versions/v2/README.md).
 
 ## Animation States
 
-The generated atlas includes:
+Both versions include:
 
 - `idle`
 - `running-right`
@@ -46,22 +67,19 @@ The generated atlas includes:
 - `running`
 - `review`
 
-`running-left` was derived by mirroring the approved `running-right` row because Mimi has no text, logo, handed prop, or direction-specific accessory.
+V2 adds 16 look directions in 22.5-degree steps across atlas rows 9 and 10. `000` means looking up, followed clockwise through `337.5`.
 
-## QA Summary
+## Manual Install
 
-The final `spritesheet.webp` passed validation:
+Replace `<version>` with `v1` or `v2`:
 
-- format: `WEBP`
-- mode: `RGBA`
-- size: `1536x1872`
-- errors: none
-- warnings: none
-
-The contact sheet below is a QA artifact, not the in-app display. Red outlined checkerboard cells are expected unused transparent slots for animation rows with fewer than 8 frames.
-
-<img src="qa/contact-sheet.png" alt="Mimi QA contact sheet" width="960">
+```bash
+mkdir -p ~/.codex/pets/mimi
+cp versions/<version>/pet/pet.json \
+  versions/<version>/pet/spritesheet.webp \
+  ~/.codex/pets/mimi/
+```
 
 ## License
 
-MIT. See `LICENSE`.
+MIT. See [LICENSE](LICENSE).
